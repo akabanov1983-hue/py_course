@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8823165-292f-47a7-8b10-b570489632cf" name="Changes" comment="Изменено название фала с Л3">
-      <change afterPath="$PROJECT_DIR$/Lecture 3/Andrey_Kabanov_class_work_L3_P2.py" afterDir="false" />
+    <list default="true" id="d8823165-292f-47a7-8b10-b570489632cf" name="Changes" comment="Обнова в домашке по 2 лекции">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture 2/Andrey_Kabanov_home_work_L2_P2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lecture 2/Andrey_Kabanov_home_work_L2_P2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lecture 3/Andrey_Kabanov_class_work_L3_P1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lecture 3/Andrey_Kabanov_class_work_L3_P1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1774502880595</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Обнова в домашке по 2 лекции">
+      <created>1774627796580</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1774627796580</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,6 +180,7 @@
     <MESSAGE value="Добавил файл с лекцией 3" />
     <MESSAGE value="Изменил имя для файла с лекцией 2.2" />
     <MESSAGE value="Изменено название фала с Л3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменено название фала с Л3" />
+    <MESSAGE value="Обнова в домашке по 2 лекции" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обнова в домашке по 2 лекции" />
   </component>
 </project>
