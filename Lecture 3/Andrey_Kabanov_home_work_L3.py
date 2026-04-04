@@ -36,10 +36,10 @@
 # print(res_list)
 
 
-# Home work 3.5
-
-li = input('Введите целые числа через пробел: ').split()
-
-li_int = [int(i) for i in li]
-
-print(f'Сумма введенных чисел: {sum(li_int)}')
+# # Home work 3.5
+#
+# li = input('Введите целые числа через пробел: ').split()
+#
+# li_int = [int(i) for i in li]
+#
+# print(f'Сумма введенных чисел: {sum(li_int)}')
