@@ -300,21 +300,21 @@
 #
 # main()
 
-# # Часть 2. Модули
-# # 10-04-2026
+# Часть 2. Модули
+# 10-04-2026
+
+# import time
 #
-# # import time
-# #
-# # a = time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.gmtime())
-# #
-# # print(a)
-# #
-# # import calendar
-# #
-# # a = calendar.isleap(2000)
-# #
-# # print(a)
+# a = time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.gmtime())
 #
+# print(a)
+#
+# import calendar
+#
+# a = calendar.isleap(2000)
+#
+# print(a)
+
 # import random as r
 #
 #
