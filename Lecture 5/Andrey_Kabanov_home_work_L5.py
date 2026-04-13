@@ -56,16 +56,55 @@
 
 # Home work 5.1
 
-def is_year_leap(year):
-    """Проверить, является ли год високосным.
+# def is_year_leap(year):
+#     """Проверить, является ли год високосным.
+#
+#     :param year: Год для проверки.
+#     :type year: int
+#     :return: True, если год високосный, иначе False.
+#     :rtype: bool
+#     """
+#     if year % 400 == 0:
+#         return True
+#     if year % 100 == 0:
+#         return False
+#     if year % 4 == 0:
+#         return True
+#     return False
+#
+# # Тестовые данные.
+# test_data = [1500, 1900, 2000, 2016, 1987]
+#
+# test_results = [False, False, True, True, False]
+#
+# # Проверка результатов работы функции в цикле.
+# for year, result in zip(test_data, test_results):  # Объединяет два списка
+#     if is_year_leap(year) == result:
+#         print(f'{year} is leap --> {result}')
+#     else:
+#         print(f'{year} from your fanc --> {is_year_leap(year)}')
+#         print(f'but expected --> {result}')
 
-    :param year: Год для проверки.
-    :type year: int
-    :return: True, если год високосный, иначе False.
-    :rtype: bool
+# Home work (lab BMI)
+
+def bmi(weight, height):
+    """Вычислить индекс массы тела.
+
+    :param weight: Масса тела в килограммах.
+    :type weight: float
+    :param height: Рост в метрах.
+    :type height: float
+    :return: Индекс массы тела.
+    :rtype: float
     """
-    if year % 4 == 0:
-        return True
-    return False
+    if height < 1.0 or height > 2.5 or weight < 20 or weight > 200:
+        return None
+    return round((weight / height ** 2), 1)
+
+print(bmi(80, 1.78))
+
+# def main():
+#
+
 
 
