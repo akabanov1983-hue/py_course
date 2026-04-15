@@ -87,24 +87,97 @@
 
 # Home work (lab BMI)
 
-def bmi(weight, height):
-    """Вычислить индекс массы тела.
-
-    :param weight: Масса тела в килограммах.
-    :type weight: float
-    :param height: Рост в метрах.
-    :type height: float
-    :return: Индекс массы тела.
-    :rtype: float
-    """
-    if height < 1.0 or height > 2.5 or weight < 20 or weight > 200:
-        return None
-    return round((weight / height ** 2), 1)
-
-print(bmi(80, 1.78))
-
-# def main():
+# def bmi(weight, height):
+#     """Вычислить индекс массы тела.
 #
+#     :param weight: Масса тела в килограммах.
+#     :type weight: float
+#     :param height: Рост в метрах.
+#     :type height: float
+#     :return: Индекс массы тела.
+#     :rtype: float
+#     """
+#     if height < 1.0 or height > 2.5 or weight < 20 or weight > 200:
+#         return None
+#     return round((weight / height ** 2), 1)
+#
+# print(bmi(80, 1.78))
+#
+# def main():
+#     """Расчет индекса массы тела"""
+#
+#     print("""
+#     ##############################################################
+#         Расчет индекса массы тела.
+#
+#         Необходимо ввести вес в килограммах и рост в метрах
+#
+#         Для выхода из программы необходиммо ввести "-1"
+#
+#     ##############################################################
+#             """)
+#
+#
+#
+#     weight,  height= float(input
+#                 ("Введите вес в килограммах или -1 для выхода: ").strip()), \
+#                 float(input("Введите рост в метрах или -1 для выхода: ").strip())
+#
+#     while weight != -1 or height != -1:
+#         ind = bmi(weight, height)
+#         if ind <= 18.3:
+#             print(f'Ваш ИМТ {ind} - это дефицит массы тела')
+#         elif ind > 18.3 and ind <= 24.9:
+#             print(f'Ваш ИМТ {ind} - это норма')
+#         elif ind > 24.9 and ind <=29.8:
+#             print(f'Ваш ИМТ {ind} - это предожирение')
+#         elif ind > 29.8 and ind <=34:
+#             print(f'Ваш ИМТ {ind} - это ожирений 1 степени')
+#         elif ind > 34 and ind <= 40:
+#             print(f'Ваш ИМТ {ind} - это ожирений 2 степени')
+#         elif ind > 40 and ind <= 52:
+#             print(f'Ваш ИМТ {ind} - это ожирений 3 степени')
+#         else:
+#             print('Вы ввели неправильное значение.')
+#
+#         weight, height = float(input
+#                                ("Введите вес в килограммах или -1 для выхода: ").strip()), \
+#             float(input("Введите рост в метрах или -1 для выхода: ").strip())
+#
+# main()
+
+
+# # Home work 5.4 Fibonacci numbers
+#
+# def fibonacci_number(number):
+#     """
+#     ####################################################################
+#     #  Эта программа рассчитывает сумму элементов последовательности   #
+#     #  Фибоначчи по его номеру.                                        #
+#     ####################################################################
+#     """
+#
+#
+#     if number < 1:
+#         return None
+#     if number < 3:
+#         return 1
+#
+#     elem_1 = elem_2 = 1
+#
+#     fib_sum = 0
+#
+#     for i in range(3, number + 1):
+#         fib_sum = elem_1 + elem_2
+#         elem_1, elem_2 = elem_2, fib_sum
+#     return fib_sum
+#
+#
+#
+# for i in range(-1, 25):
+#     print(fibonacci_number(i))
+
+
 
 
 
