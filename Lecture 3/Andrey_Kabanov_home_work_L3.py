@@ -61,7 +61,7 @@
 # print(res_list)
 #
 #
-# # Home work 3.5
+# Home work 3.5
 # li = input('Введите целые числа через пробел: ').split()
 #
 # # Convert str to int type.

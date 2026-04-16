@@ -27,4 +27,4 @@ def test_my_pow_1_true():
 
 # m.nameUpper()
 def test_nameUpper_true():
-    assert m.nameUpper(ppp) == PPP
+    assert m.nameUpper('ppp') == 'PPP'
