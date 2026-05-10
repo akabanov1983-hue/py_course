@@ -1,30 +1,44 @@
-transactions = {
-    1: {
-        "type": "income",
-        "amount": 3000.00,
-        "category": "salary",
-        "date": "2026-05-01",
-        "comment": "Monthly salary"
-    },
-    2: {
-        "type": "expense",
-        "amount": 45.50,
-        "category": "food",
-        "date": "2026-05-01",
-        "comment": "Lunch"
-    }
-}
-
-def create_transaction():
+def create_transaction(transactions):
     """Функция создает финансовую транзакцию"""
 
-    transaction_id = max(transactions.keys()) + 1
+    print('-----------------------------------------------')
 
-    transaction_type = input("Введите категорию (доход/расход): ")
-    amount = float(input("Введите сумму: "))
-    category = input("Введите категорию: ")
-    date =  input("Введите дату в формате гггг-мм-дд: ")
-    comment = input("Введите комментарий: ")
+    print('Выбрано: создание новой транзакции')
+
+    print()
+
+    transaction_id = max(transactions.keys(), default=0) + 1
+
+    transaction_type = input("Введите категорию (доход/расход): ").strip().lower()
+
+    while transaction_type not in ('доход', 'расход'):
+        print('Ошибка. Требуется ввести "доход" или "расход"')
+        transaction_type = input("Введите категорию (доход/расход): ").strip().lower()
+
+    while True:
+        amount_text = input("Введите сумму: ").strip()
+
+        try:
+            amount = float(amount_text)
+        except ValueError:
+            print("Ошибка. Сумма должна быть числом.")
+            continue
+
+        if amount <= 0:
+            print("Ошибка. Сумма должна быть больше 0.")
+            continue
+
+        break
+
+
+    category = input("Введите категорию: ").strip()
+
+    date =  input("Введите дату в формате гггг-мм-дд: ").strip()
+
+    comment = input("Введите комментарий: ").strip()
+
+
+
 
     transactions[transaction_id] = {
         "type": transaction_type,
@@ -34,6 +48,7 @@ def create_transaction():
         "comment": comment
         }
 
+    print()
     print(f'Транзакция успешно создана:\n'
           f'ID: {transaction_id}\n'
           f'Тип {transactions[transaction_id]["type"]}\n'
@@ -42,10 +57,17 @@ def create_transaction():
           f'Дата {transactions[transaction_id]["date"]}\n'
           f'Описание: {transactions[transaction_id]["comment"]}\n')
 
+    print('-----------------------------------------------')
 
 
-def get_transaction_by_id(transaction_id):
+def get_transaction_by_id(transactions, transaction_id):
     """Функция возвращает транзакцию по ее идентификатору"""
+
+    print('-----------------------------------------------')
+
+    print('Выбрано: вывести на экран транзакцию по идентификатору')
+
+    print()
 
     if transaction_id not in transactions.keys():
         print(f'Транзакции с идентификатором {transaction_id} не существует')
@@ -58,9 +80,17 @@ def get_transaction_by_id(transaction_id):
               f'Дата {transactions[transaction_id]["date"]}\n'
               f'Описание: {transactions[transaction_id]["comment"]}\n')
 
+        print('-----------------------------------------------')
 
-def get_list_of_transactions():
+
+def get_list_of_transactions(transactions):
     """Функция возвращает список всех транзакций"""
+
+    print('-----------------------------------------------')
+
+    print('Выбрано: вывести на экран список транзакций')
+
+    print()
 
     for transaction_id in transactions.keys():
         print(f'transaction id: {transaction_id} |'
@@ -70,10 +100,17 @@ def get_list_of_transactions():
               f'date: {transactions[transaction_id]["date"]} |'
               f'comment: {transactions[transaction_id]["comment"]} |')
 
+        print('-----------------------------------------------')
 
 
-def delete_transaction_by_id(transaction_id):
-    """Функция удаляет транзакцию по ее идентификатру"""
+def delete_transaction_by_id(transactions, transaction_id):
+    """Функция удаляет транзакцию по ее идентификатору"""
+
+    print('-----------------------------------------------')
+
+    print('Выбрано: удалить транзакцию по идентификатору')
+
+    print()
 
     if transaction_id not in transactions.keys():
         print(f'Транзакции с идентификатором {transaction_id} не существует')
@@ -81,30 +118,88 @@ def delete_transaction_by_id(transaction_id):
         del transactions[transaction_id]
         print(f'Транзакция с идентификатором {transaction_id} успешно удалена')
 
+        print('-----------------------------------------------')
 
 
-def update_transaction_by_id(transaction_id):
-    """Функция частично обновляет транзацкцию по ее идентификатору"""
+def update_transaction_by_id(transactions, transaction_id):
+    """Функция частично обновляет транзакцию по ее идентификатору"""
 
-    if transaction_id not in transactions.keys():
+    print('-----------------------------------------------')
+
+    print('Выбрано: изменить транзакцию по идентификатору')
+
+    print()
+
+    if transaction_id not in transactions:
         print(f'Транзакция с идентификатором {transaction_id} не существует')
+        return
+
     else:
-        print('Введите новое значение или "Enter" '
-              'для пропуска и перехода к следующему')
+        print('Введите новое значение поля или нажмите "Enter" '
+              'для пропуска и перехода к следующему полю')
+
+        while True:
+
+            new_type = input(
+                f'Прежнее значение "{transactions[transaction_id]["type"]}", '
+                f'введите новое: '
+            ).strip().lower()
+
+            if new_type == "":
+                break
+
+            if new_type in ("доход", "расход"):
+                transactions[transaction_id]["type"] = new_type
+                break
+
+            print('Ошибка. Требуется ввести "доход" или "расход"')
 
 
+        while True:
 
-# create_transaction()
+            new_amount_text = input(f'Прежнее значение '
+                           f'"{transactions[transaction_id]["amount"]}", введите новое:').strip()
 
-# print(transactions)
+            if new_amount_text == "":
+                break
 
-# get_transaction_by_id(3)
+            try:
+                new_amount = float(new_amount_text)
 
-# get_list_of_transactions()
-#
-# delete_transaction_by_id(1)
-#
-# get_list_of_transactions()
-#
-# delete_transaction_by_id(1)
+            except ValueError:
+                print("Ошибка. Сумма должна быть числом.")
+                continue
 
+            if new_amount <= 0:
+                print("Ошибка. Сумма должна быть больше 0.")
+                continue
+
+            transactions[transaction_id]["amount"] = new_amount
+
+            break
+
+        new_category = input(f'Прежнее значение '
+                             f'"{transactions[transaction_id]["category"]}", введите новое: ')
+
+        new_date =  input(f'Прежнее значение '
+                          f'"{transactions[transaction_id]["date"]}", введите новое: ')
+
+        new_comment = input(f'Прежнее значение '
+                            f'"{transactions[transaction_id]["comment"]}", введите новое: ')
+
+        new_type = input(f'Прежнее значение '
+                            f'"{transactions[transaction_id]["type"]}", введите новое: ')
+
+        if new_type:
+            transactions[transaction_id]["type"] = new_type
+
+        if new_category:
+            transactions[transaction_id]["category"] = new_category
+
+        if new_date:
+            transactions[transaction_id]["date"] = new_date
+
+        if new_comment:
+            transactions[transaction_id]["comment"] = new_comment
+
+        print('-----------------------------------------------')
