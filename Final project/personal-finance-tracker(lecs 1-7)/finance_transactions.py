@@ -1,5 +1,16 @@
 def create_transaction(transactions):
-    """Функция создает финансовую транзакцию"""
+    """
+    Создает новую финансовую транзакцию.
+
+    Запрашивает у пользователя тип транзакции, сумму, категорию,
+    дату и комментарий. Проверяет, что тип транзакции равен
+    "доход" или "расход", а сумма является положительным числом.
+    После успешного ввода добавляет транзакцию в словарь transactions.
+
+    :param transactions: Словарь с финансовыми транзакциями.
+    :type transactions: dict
+    :return: None
+    """
 
     print('-----------------------------------------------')
 
@@ -7,14 +18,17 @@ def create_transaction(transactions):
 
     print()
 
+    # Создание идентификатора транзации.
     transaction_id = max(transactions.keys(), default=0) + 1
 
-    transaction_type = input("Введите категорию (доход/расход): ").strip().lower()
+    transaction_type = input("Введите тип (доход/расход): ").strip().lower()
 
+    # Проверка на ввод типа транзакции: доход/расход.
     while transaction_type not in ('доход', 'расход'):
         print('Ошибка. Требуется ввести "доход" или "расход"')
         transaction_type = input("Введите категорию (доход/расход): ").strip().lower()
 
+    # Проверка на ввод суммы: сумма должна быть числом и должна быть больше 0.
     while True:
         amount_text = input("Введите сумму: ").strip()
 
@@ -30,16 +44,13 @@ def create_transaction(transactions):
 
         break
 
-
     category = input("Введите категорию: ").strip()
 
     date =  input("Введите дату в формате гггг-мм-дд: ").strip()
 
     comment = input("Введите комментарий: ").strip()
 
-
-
-
+    # Сохранение введенных данных в словарь.
     transactions[transaction_id] = {
         "type": transaction_type,
         "amount": amount,
@@ -51,13 +62,13 @@ def create_transaction(transactions):
     print()
     print(f'Транзакция успешно создана:\n'
           f'ID: {transaction_id}\n'
-          f'Тип {transactions[transaction_id]["type"]}\n'
+          f'Тип: {transactions[transaction_id]["type"]}\n'
           f'Сумма: {transactions[transaction_id]["amount"]}\n'
           f'Категория: {transactions[transaction_id]["category"]}\n'
-          f'Дата {transactions[transaction_id]["date"]}\n'
+          f'Дата: {transactions[transaction_id]["date"]}\n'
           f'Описание: {transactions[transaction_id]["comment"]}\n')
 
-    print('-----------------------------------------------')
+    print('---------------------------------------------')
 
 
 def get_transaction_by_id(transactions, transaction_id):
@@ -74,17 +85,30 @@ def get_transaction_by_id(transactions, transaction_id):
 
     else:
         print(f'ID: {transaction_id}\n'
-              f'Тип {transactions[transaction_id]["type"]}\n'
+              f'Тип: {transactions[transaction_id]["type"]}\n'
               f'Сумма: {transactions[transaction_id]["amount"]}\n'
               f'Категория: {transactions[transaction_id]["category"]}\n'
-              f'Дата {transactions[transaction_id]["date"]}\n'
+              f'Дата: {transactions[transaction_id]["date"]}\n'
               f'Описание: {transactions[transaction_id]["comment"]}\n')
 
         print('-----------------------------------------------')
 
 
 def get_list_of_transactions(transactions):
-    """Функция возвращает список всех транзакций"""
+    """
+    Выводит на экран финансовую транзакцию по ее идентификатору.
+
+    Функция проверяет, существует ли транзакция с указанным
+    идентификатором в словаре transactions. Если транзакция найдена,
+    выводит ее данные на экран. Если транзакция не найдена,
+    выводит сообщение об ошибке.
+
+    :param transactions: Словарь с финансовыми транзакциями.
+    :type transactions: dict
+    :param transaction_id: Идентификатор транзакции для поиска.
+    :type transaction_id: int
+    :return: None
+    """
 
     print('-----------------------------------------------')
 
@@ -92,6 +116,7 @@ def get_list_of_transactions(transactions):
 
     print()
 
+    # Перебор списка транзакций в словаре через цикл и вывод каждой записи.
     for transaction_id in transactions.keys():
         print(f'transaction id: {transaction_id} |'
               f'type: {transactions[transaction_id]["type"]} |'
@@ -104,7 +129,20 @@ def get_list_of_transactions(transactions):
 
 
 def delete_transaction_by_id(transactions, transaction_id):
-    """Функция удаляет транзакцию по ее идентификатору"""
+    """
+    Удаляет финансовую транзакцию по ее идентификатору.
+
+    Функция проверяет, существует ли транзакция с указанным
+    идентификатором в словаре transactions. Если транзакция найдена,
+    удаляет ее из словаря. Если транзакция не найдена, выводит
+    сообщение об ошибке.
+
+    :param transactions: Словарь с финансовыми транзакциями.
+    :type transactions: dict
+    :param transaction_id: Идентификатор транзакции для удаления.
+    :type transaction_id: int
+    :return: None
+    """
 
     print('-----------------------------------------------')
 
@@ -122,7 +160,26 @@ def delete_transaction_by_id(transactions, transaction_id):
 
 
 def update_transaction_by_id(transactions, transaction_id):
-    """Функция частично обновляет транзакцию по ее идентификатору"""
+    """
+    Частично обновляет финансовую транзакцию по ее идентификатору.
+
+    Функция проверяет наличие транзакции с указанным идентификатором
+    в словаре transactions. Если транзакция найдена, пользователь может
+    изменить тип, сумму, категорию, дату и комментарий.
+
+    Для каждого поля показывается текущее значение. Если пользователь
+    вводит новое значение, оно сохраняется в транзакции. Если пользователь
+    нажимает Enter без ввода значения, поле остается без изменений.
+
+    Тип транзакции должен быть равен "доход" или "расход".
+    Сумма должна быть положительным числом.
+
+    :param transactions: Словарь с финансовыми транзакциями.
+    :type transactions: dict
+    :param transaction_id: Идентификатор транзакции для обновления.
+    :type transaction_id: int
+    :return: None
+    """
 
     print('-----------------------------------------------')
 
@@ -141,7 +198,7 @@ def update_transaction_by_id(transactions, transaction_id):
         while True:
 
             new_type = input(
-                f'Прежнее значение "{transactions[transaction_id]["type"]}", '
+                f'Прежнее значение "Тип" "{transactions[transaction_id]["type"]}", '
                 f'введите новое: '
             ).strip().lower()
 
@@ -157,7 +214,7 @@ def update_transaction_by_id(transactions, transaction_id):
 
         while True:
 
-            new_amount_text = input(f'Прежнее значение '
+            new_amount_text = input(f'Прежнее значение "Сумма" '
                            f'"{transactions[transaction_id]["amount"]}", введите новое:').strip()
 
             if new_amount_text == "":
@@ -178,17 +235,15 @@ def update_transaction_by_id(transactions, transaction_id):
 
             break
 
-        new_category = input(f'Прежнее значение '
+        new_category = input(f'Прежнее значение "Категория"'
                              f'"{transactions[transaction_id]["category"]}", введите новое: ')
 
-        new_date =  input(f'Прежнее значение '
+        new_date =  input(f'Прежнее значение "Дата"'
                           f'"{transactions[transaction_id]["date"]}", введите новое: ')
 
-        new_comment = input(f'Прежнее значение '
+        new_comment = input(f'Прежнее значение "Комментарий"'
                             f'"{transactions[transaction_id]["comment"]}", введите новое: ')
 
-        new_type = input(f'Прежнее значение '
-                            f'"{transactions[transaction_id]["type"]}", введите новое: ')
 
         if new_type:
             transactions[transaction_id]["type"] = new_type

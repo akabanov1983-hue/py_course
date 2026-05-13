@@ -6,16 +6,16 @@ from finance_transactions import delete_transaction_by_id  as d_t
 
 transactions = {
     1: {
-        "type": "income",
+        "type": "доход",
         "amount": 3000.00,
-        "category": "salary",
+        "category": "зарплата",
         "date": "2026-05-01",
         "comment": "Monthly salary"
     },
     2: {
-        "type": "expense",
+        "type": "расход",
         "amount": 45.50,
-        "category": "food",
+        "category": "Еда",
         "date": "2026-05-01",
         "comment": "Lunch"
     }
@@ -92,14 +92,4 @@ def main():
                 print("Неизвестная команда")
 
 
-
-
-
-        # operation = int(input(start_message))
-
 main()
-
-
-
-
-
